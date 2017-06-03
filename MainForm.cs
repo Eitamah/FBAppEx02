@@ -11,6 +11,7 @@ using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using FacebookApp.BusinessLogic.Builder;
 using FacebookApp.BusinessLogic;
+using System.Threading;
 
 namespace FacebookApp
 {
@@ -40,6 +41,11 @@ namespace FacebookApp
 
         private void LoginFinishedHandler()
         {
+            this.Invoke(new Action(loginFinished));
+        }
+
+        private void loginFinished()
+        {
             enableButtons();
             pageBindingSource.DataSource = FacebookLogic.GetInstance().LoggedInUser.LikedPages;
             listBoxPages.DataSource = pageBindingSource;
@@ -61,7 +67,7 @@ namespace FacebookApp
         {
             buttonChartButton.Enabled = true;
             buttonLogout.Enabled = true;
-            buttonLogin.Enabled = false;
+            buttonLogin.Enabled = true;
         }
         private void disableButtons()
         {
@@ -72,7 +78,10 @@ namespace FacebookApp
 
         private void loginAndInit()
         {
-            FacebookLogic.GetInstance().Login();
+            FacebookLogic f = FacebookLogic.GetInstance();
+            Thread t = new Thread(FacebookLogic.GetInstance().Login);
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -86,6 +95,11 @@ namespace FacebookApp
         }
 
         private void LogoutFinishedHandler()
+        {
+            this.Invoke(new Action(LogoutFinished));
+        }
+
+        private void LogoutFinished()
         {
             friendsChart.Series.Clear();
 

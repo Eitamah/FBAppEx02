@@ -51,7 +51,7 @@ namespace FacebookApp.BusinessLogic
             {
                 LoggedInUser = result.LoggedInUser;
                 getCommonFriends();
-                LoginFinished();
+                LoginFinished.Invoke();
             }
         }
 
