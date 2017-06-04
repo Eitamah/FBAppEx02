@@ -12,7 +12,6 @@ namespace FacebookApp.BusinessLogic
     public sealed class FacebookLogic
     {
         private static FacebookLogic s_Instance = null;
-
         public event LoginFinishedEvent LoginFinished;
         public delegate void LoginFinishedEvent();
         public event LogoutFinishedEvent LogoutFinished;
@@ -86,7 +85,7 @@ namespace FacebookApp.BusinessLogic
             foreach (User friend in LoggedInUser.Friends)
             {
                 int commonLikes = getCommonLikes(friend);
-                int commonFriends = GetCommonFriends(friend);
+                int commonFriends = getCommonFriendsFriend(friend);
 
                 if (commonLikes > maxPages)
                 {
@@ -102,7 +101,7 @@ namespace FacebookApp.BusinessLogic
             }
         }
 
-        private int GetCommonFriends(User i_Friend)
+        private int getCommonFriendsFriend(User i_Friend)
         {
             int count = 0;
 

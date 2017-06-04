@@ -239,9 +239,6 @@
       </violation>
     </violations>
   </sourcecode>
-  <project key="-294681349">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="BuildersFactory.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016-11-09 20:13:02.000</styleCop>
@@ -466,11 +463,14 @@
       </violation>
     </violations>
   </sourcecode>
+  <project key="-294681349">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="FacebookLogic.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016-11-09 20:13:02.000</styleCop>
       <settingsFile>2017-04-06 00:10:24.429</settingsFile>
-      <sourceFile>2017-06-04 18:49:29.228</sourceFile>
+      <sourceFile>2017-06-04 20:47:49.985</sourceFile>
       <parser>2016-11-09 20:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016-11-09 20:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>119483193</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -495,6 +495,16 @@
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
         <context>Adjacent elements must be separated by a blank line.</context>
+        <line>15</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
+        <context>Adjacent elements must be separated by a blank line.</context>
+        <line>16</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
+        <context>Adjacent elements must be separated by a blank line.</context>
         <line>17</line>
         <warning>False</warning>
       </violation>
@@ -508,14 +518,14 @@
         <line>19</line>
         <warning>False</warning>
       </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="StaticElementsMustAppearBeforeInstanceElements" ruleCheckId="SA1204">
+        <context>All static public properties must be placed before all non-static public properties.</context>
+        <line>25</line>
+        <warning>False</warning>
+      </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
         <context>Adjacent elements must be separated by a blank line.</context>
         <line>20</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="StaticElementsMustAppearBeforeInstanceElements" ruleCheckId="SA1204">
-        <context>All static public properties must be placed before all non-static public properties.</context>
-        <line>26</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
@@ -523,14 +533,9 @@
         <line>21</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
-        <context>Adjacent elements must be separated by a blank line.</context>
-        <line>22</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementMustNotBeOnSingleLine" ruleCheckId="SA1502">
         <context>The constructor must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>24</line>
+        <line>23</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -539,7 +544,7 @@
     <timestamps>
       <styleCop>2016-11-09 20:13:02.000</styleCop>
       <settingsFile>2017-04-06 00:10:24.429</settingsFile>
-      <sourceFile>2017-06-04 18:51:17.420</sourceFile>
+      <sourceFile>2017-06-04 21:45:05.667</sourceFile>
       <parser>2016-11-09 20:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016-11-09 20:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>119483193</StyleCop.CSharp.DocumentationRules.FilesHashCode>

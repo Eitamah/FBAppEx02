@@ -26,8 +26,8 @@ namespace FacebookApp
             FacebookWrapper.FacebookService.s_CollectionLimit = k_CollectionLimit;
             FacebookWrapper.FacebookService.s_FbApiVersion = k_FbApiVersion;
             disableButtons();
-            FacebookLogic.Instance.LoginFinished += LoginFinishedHandler;
-            FacebookLogic.Instance.LogoutFinished += LogoutFinishedHandler;
+            FacebookLogic.Instance.LoginFinished += OnLoginFinishedHandler;
+            FacebookLogic.Instance.LogoutFinished += OnLogoutFinishedHandler;
             AddChartTypes();
         }
 
@@ -39,7 +39,7 @@ namespace FacebookApp
             }
         }
 
-        private void LoginFinishedHandler()
+        private void OnLoginFinishedHandler()
         {
             this.Invoke(new Action(loginFinished));
         }
@@ -78,7 +78,6 @@ namespace FacebookApp
 
         private void loginAndInit()
         {
-            FacebookLogic f = FacebookLogic.Instance;
             Thread t = new Thread(FacebookLogic.Instance.Login);
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
@@ -94,7 +93,7 @@ namespace FacebookApp
             FacebookLogic.Instance.Logout();
         }
 
-        private void LogoutFinishedHandler()
+        private void OnLogoutFinishedHandler()
         {
             this.Invoke(new Action(LogoutFinished));
         }
