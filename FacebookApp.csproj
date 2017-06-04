@@ -61,7 +61,6 @@
     <Compile Include="BusinessLogic\Builder\GenderChartBuilder.cs" />
     <Compile Include="BusinessLogic\Builder\RelationshipStatusChartBuilder.cs" />
     <Compile Include="BusinessLogic\FacebookLogic.cs" />
-    <Compile Include="BusinessLogic\LoginFinishedEvent.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

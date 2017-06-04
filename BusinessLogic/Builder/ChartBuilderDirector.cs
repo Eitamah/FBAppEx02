@@ -9,15 +9,14 @@ namespace FacebookApp.BusinessLogic.Builder
 {
     public class ChartBuilderDirector
     {
-        static public Chart BuildChartData(eChartType type, User user, Chart chart)
+        static public Chart BuildChart(IChartBuilder i_Builder, User i_User)
         {
-            IChartBuilder builder = BuildersFactory.CreateChartBuilder(type);
-            builder.BuildChart();
-            builder.PopulateKeys(user);
-            builder.PopulateValues(user);
-            builder.PopulateChart();
+            i_Builder.BuildChart();
+            i_Builder.PopulateKeys(i_User);
+            i_Builder.PopulateValues(i_User);
+            i_Builder.PopulateChart();
 
-            return builder.GetChart();
+            return i_Builder.GetChart();
         }
     }
 }

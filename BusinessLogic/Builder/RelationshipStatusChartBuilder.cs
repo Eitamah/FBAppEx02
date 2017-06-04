@@ -32,7 +32,7 @@ namespace FacebookApp.BusinessLogic.Builder
             }
         }
 
-        public void PopulateKeys(User user)
+        public void PopulateKeys(User i_User)
         {
             foreach (User.eRelationshipStatus item in Enum.GetValues(typeof(User.eRelationshipStatus)))
             {
@@ -40,9 +40,9 @@ namespace FacebookApp.BusinessLogic.Builder
             }
         }
 
-        public void PopulateValues(User user)
+        public void PopulateValues(User i_User)
         {
-            foreach (User friend in user.Friends)
+            foreach (User friend in i_User.Friends)
             {
                 try
                 {

@@ -5,27 +5,27 @@ using System.Text;
 
 namespace FacebookApp.BusinessLogic.Builder
 {
-    public class BuildersFactory
+    public static class BuildersFactory
     {
         public static IChartBuilder CreateChartBuilder(eChartType i_Type)
         {
-            IChartBuilder ret = null;
+            IChartBuilder builder = null;
 
             switch (i_Type)
             {
                 case eChartType.Gender:
                 {
-                    ret = new GenderChartBuilder();
+                    builder = new GenderChartBuilder();
                     break;
                 }
                 case eChartType.City:
                 {
-                    ret = new CityChartBuilder();
+                    builder = new CityChartBuilder();
                     break;
                 }
                 case eChartType.RelationshipStatus:
                 {
-                    ret = new RelationshipStatusChartBuilder();
+                    builder = new RelationshipStatusChartBuilder();
                     break;
                 }
                 default:
@@ -34,7 +34,7 @@ namespace FacebookApp.BusinessLogic.Builder
                 }
             }
 
-            return ret;
+            return builder;
         }
     }
 }

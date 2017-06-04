@@ -32,10 +32,10 @@ namespace FacebookApp.BusinessLogic.Builder
             }
         }
 
-        public void PopulateKeys(User user)
+        public void PopulateKeys(User i_User)
         {
             // Add all cities
-            foreach (User friend in user.Friends)
+            foreach (User friend in i_User.Friends)
             {
                 try
                 {
@@ -48,10 +48,10 @@ namespace FacebookApp.BusinessLogic.Builder
             }
         }
 
-        public void PopulateValues(User user)
+        public void PopulateValues(User i_User)
         {
             // Count friends location
-            foreach (User friend in user.Friends)
+            foreach (User friend in i_User.Friends)
             {
                 try
                 {

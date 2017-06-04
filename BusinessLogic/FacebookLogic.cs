@@ -9,30 +9,31 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace FacebookApp.BusinessLogic
 {
-    public class FacebookLogic
+    public sealed class FacebookLogic
     {
+        private static FacebookLogic s_Instance = null;
+
         public event LoginFinishedEvent LoginFinished;
         public delegate void LoginFinishedEvent();
         public event LogoutFinishedEvent LogoutFinished;
         public delegate void LogoutFinishedEvent();
         public User LoggedInUser { get; private set; }
-        static private FacebookLogic instance;
         public User CommonLikesFriend { get; private set; }
         public User CommonFriendsFriend { get; private set; }
 
-        private FacebookLogic()
-        {
+        private FacebookLogic() { }
 
-        }
-
-        static public FacebookLogic GetInstance()
+        public static FacebookLogic Instance
         {
-            if (instance == null)
+            get
             {
-                instance = new FacebookLogic();
-            }
+                if (s_Instance == null)
+                {
+                    s_Instance = new FacebookLogic();
+                }
 
-            return instance;
+                return s_Instance;
+            }
         }
  
         public void Login()
@@ -66,9 +67,10 @@ namespace FacebookApp.BusinessLogic
             LogoutFinished();
         }
 
-        internal Chart GetChart(eChartType type, Chart chart)
+        public Chart GetChart(eChartType i_Type)
         {
-            return ChartBuilderDirector.BuildChartData(type, LoggedInUser, chart);
+            IChartBuilder builder = BuildersFactory.CreateChartBuilder(i_Type);
+            return ChartBuilderDirector.BuildChart(builder, LoggedInUser);
         }
 
         private void getCommonFriends()
@@ -100,13 +102,13 @@ namespace FacebookApp.BusinessLogic
             }
         }
 
-        private int GetCommonFriends(User friend)
+        private int GetCommonFriends(User i_Friend)
         {
             int count = 0;
 
             foreach (User userFriend in LoggedInUser.Friends)
             {
-                foreach (User friendFriend in friend.Friends)
+                foreach (User friendFriend in i_Friend.Friends)
                 {
                     if (userFriend.Id == friendFriend.Id)
                     {
@@ -118,13 +120,13 @@ namespace FacebookApp.BusinessLogic
             return count;
         }
 
-        private int getCommonLikes(User friend)
+        private int getCommonLikes(User i_Friend)
         {
             int count = 0;
 
             foreach (Page likedPage in LoggedInUser.LikedPages)
             {
-                foreach (Page friendLikedPage in friend.LikedPages)
+                foreach (Page friendLikedPage in i_Friend.LikedPages)
                 {
                     if (likedPage.Id == friendLikedPage.Id)
                     {

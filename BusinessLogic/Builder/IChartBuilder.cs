@@ -10,8 +10,8 @@ namespace FacebookApp.BusinessLogic.Builder
     public interface IChartBuilder
     {
         void BuildChart();
-        void PopulateKeys(User user);
-        void PopulateValues(User user);
+        void PopulateKeys(User i_User);
+        void PopulateValues(User i_User);
         void PopulateChart();
         Chart GetChart();
     }

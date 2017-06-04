@@ -26,8 +26,8 @@ namespace FacebookApp
             FacebookWrapper.FacebookService.s_CollectionLimit = k_CollectionLimit;
             FacebookWrapper.FacebookService.s_FbApiVersion = k_FbApiVersion;
             disableButtons();
-            FacebookLogic.GetInstance().LoginFinished += LoginFinishedHandler;
-            FacebookLogic.GetInstance().LogoutFinished += LogoutFinishedHandler;
+            FacebookLogic.Instance.LoginFinished += LoginFinishedHandler;
+            FacebookLogic.Instance.LogoutFinished += LogoutFinishedHandler;
             AddChartTypes();
         }
 
@@ -47,7 +47,7 @@ namespace FacebookApp
         private void loginFinished()
         {
             enableButtons();
-            pageBindingSource.DataSource = FacebookLogic.GetInstance().LoggedInUser.LikedPages;
+            pageBindingSource.DataSource = FacebookLogic.Instance.LoggedInUser.LikedPages;
             listBoxPages.DataSource = pageBindingSource;
             listBoxPages.DisplayMember = "Name";
 
@@ -55,11 +55,11 @@ namespace FacebookApp
             pictureBoxCommonFriends.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxCommonLikedPages.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureCoverPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureCoverPhoto.LoadAsync(FacebookLogic.GetInstance().LoggedInUser.Cover.SourceURL);
+            pictureCoverPhoto.LoadAsync(FacebookLogic.Instance.LoggedInUser.Cover.SourceURL);
             pictureProfilePic.SizeMode = PictureBoxSizeMode.StretchImage;
-            userBindingSource.DataSource = FacebookLogic.GetInstance().LoggedInUser;
-            pictureBoxCommonFriends.LoadAsync(FacebookLogic.GetInstance().CommonFriendsFriend.PictureLargeURL);
-            pictureBoxCommonLikedPages.LoadAsync(FacebookLogic.GetInstance().CommonLikesFriend.PictureLargeURL);
+            userBindingSource.DataSource = FacebookLogic.Instance.LoggedInUser;
+            pictureBoxCommonFriends.LoadAsync(FacebookLogic.Instance.CommonFriendsFriend.PictureLargeURL);
+            pictureBoxCommonLikedPages.LoadAsync(FacebookLogic.Instance.CommonLikesFriend.PictureLargeURL);
             friendsChart.Series.Clear();
         }
 
@@ -78,8 +78,8 @@ namespace FacebookApp
 
         private void loginAndInit()
         {
-            FacebookLogic f = FacebookLogic.GetInstance();
-            Thread t = new Thread(FacebookLogic.GetInstance().Login);
+            FacebookLogic f = FacebookLogic.Instance;
+            Thread t = new Thread(FacebookLogic.Instance.Login);
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
         }
@@ -91,7 +91,7 @@ namespace FacebookApp
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            FacebookLogic.GetInstance().Logout();
+            FacebookLogic.Instance.Logout();
         }
 
         private void LogoutFinishedHandler()
@@ -124,8 +124,8 @@ namespace FacebookApp
 
             if (comboChartType.SelectedItem != null)
             {
-                Chart c = FacebookLogic.GetInstance().GetChart((eChartType)comboChartType.SelectedItem, friendsChart);
-                CopyChart(c);
+                Chart c = FacebookLogic.Instance.GetChart((eChartType)comboChartType.SelectedItem);
+                copyChart(c);
             }
             else
             {
@@ -133,9 +133,9 @@ namespace FacebookApp
             }
         }
 
-        private void CopyChart(Chart c)
+        private void copyChart(Chart i_Chart)
         {
-            foreach (Series series in c.Series)
+            foreach (Series series in i_Chart.Series)
             {
                 Series seriesChart = friendsChart.Series.Add(series.Name);
 
